@@ -1,0 +1,19 @@
+<!-- Search Bar -->
+<input 
+  type="text" 
+  [(ngModel)]="searchTerm" 
+  (input)="onSearchChange()" 
+  placeholder="Search Repositories" 
+  class="search-bar" 
+/>
+
+<!-- Repository List -->
+<div *ngFor="let repoData of filteredRepos" class="repo-card">
+  <h3>
+    <!-- Clicking a repo name redirects to the detail page -->
+    <a [routerLink]="['/repo', repoData.repo.repo_name]">{{ repoData.repo.repo_name }}</a>
+  </h3>
+  <p>{{ repoData.repo.description }}</p>
+  <p><strong>Language:</strong> {{ repoData.repo.language }}</p>
+  <p><strong>Owner:</strong> {{ repoData.repo.username }}</p>
+</div>
