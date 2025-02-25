@@ -1,0 +1,15 @@
+<div *ngIf="repoDetail">
+    <h2>{{ repoDetail.repo.repo_name }}</h2>
+    <p><strong>Description:</strong> {{ repoDetail.repo.description }}</p>
+    <p><strong>Language:</strong> {{ repoDetail.repo.language }}</p>
+    <p><strong>Owner:</strong> {{ repoDetail.repo.username }}</p>
+    <p><strong>Repository URL:</strong> <a [href]="repoDetail.repo.repo_url" target="_blank">{{ repoDetail.repo.repo_url }}</a></p>
+  
+    <h3>Statistics (Latest Report)</h3>
+    <p><strong>Stars:</strong> {{ repoDetail.daily_stats.stars }}</p>
+    <p><strong>Forks:</strong> {{ repoDetail.daily_stats.forks }}</p>
+    <p><strong>Open Issues:</strong> {{ repoDetail.daily_stats.issues }}</p>
+    <p><strong>Last Commit:</strong> {{ repoDetail.daily_stats.last_commit | date:'yyyy-MM-dd HH:mm' }}</p>
+    <a [routerLink]="['/repo', repoDetail.repo.repo_name, 'stats']">View Stats</a>
+  </div>
+  
