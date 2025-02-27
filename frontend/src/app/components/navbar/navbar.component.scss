@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--navbar-bg, #222);
+    color: var(--navbar-text, #fff);
+    padding: 10px 20px;
+  }
+  
+  .container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .nav-links a {
+    color: inherit;
+    text-decoration: none;
+    margin-right: 15px;
+  }
+  
+  .dark-mode-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  

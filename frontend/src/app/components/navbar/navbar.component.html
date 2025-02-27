@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <div class="container">      
+      <div class="nav-links">
+        <a routerLink="/">Home</a>
+      </div>
+  
+      <button class="dark-mode-btn" (click)="toggleDarkMode()">
+        {{ isDarkMode() ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+      </button>
+    </div>
+  </nav>
+  
