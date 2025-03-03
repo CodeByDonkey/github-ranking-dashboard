@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
-import Daily_Stat from "../models/statsModel";
+import { DailyStat } from "../models/statsModel";
 
 export const getDailyStatsByRepo = async (
     repo_id: mongoose.Types.ObjectId | undefined,
     getAll: boolean = true
 ) => {
     try {
-        const daily_stats = await Daily_Stat.find({ repo_id })
+        const daily_stats = await DailyStat.find({ repo_id })
         .sort({ report_date: -1 })
         .exec();
         if (getAll) {

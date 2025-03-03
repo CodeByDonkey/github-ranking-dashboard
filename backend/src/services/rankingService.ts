@@ -1,5 +1,5 @@
 import { Repo } from "../models/repoModel";
-import DailyStat from "../models/statsModel";
+import { DailyStat } from "../models/statsModel";
 
 export const getLatestRankings = async () => {
   try {
