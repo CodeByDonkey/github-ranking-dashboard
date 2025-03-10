@@ -32,10 +32,28 @@ export class RepoListComponent implements OnInit {
   repos: RepoData[] = [];
   filteredRepos: RepoData[] = [];
   searchTerm: string = '';
+  CACHE_KEY = 'reposData';  // Key for localStorage or sessionStorage
 
   constructor(private repoService: RepoService) {}
 
   ngOnInit(): void {
+    // Check if repos data is cached
+    const cachedData = localStorage.getItem(this.CACHE_KEY);
+    
+    if (cachedData) {
+      // If cached data exists, use it
+      this.repos = JSON.parse(cachedData);
+      this.filteredRepos = [...this.repos];  // Initially, show all repos
+    } else {
+      // If no cached data, fetch from API
+      this.repoService.getRepos().subscribe(data => {
+        this.repos = data;
+        this.filteredRepos = data;
+        
+        // Cache the data for next time
+        localStorage.setItem(this.CACHE_KEY, JSON.stringify(data));
+      });
+    }
     this.repoService.getRepos().subscribe(data => {
       this.repos = data;
       this.filteredRepos = data;  // Initially, show all repos
