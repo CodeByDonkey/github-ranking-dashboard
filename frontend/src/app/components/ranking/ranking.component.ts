@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RankingComponent implements OnInit {
   rankings: any[] = [];
-  currentPage: number = 1;  // Start on the first page
-  itemsPerPage: number = 5; // Number of items per page
-  totalItems: number = 0;   // Total number of items (you may want to get this from your API if available)
-
-  itemsPerPageOptions: number[] = [5, 10, 20, 50]; // Options for items per page
+  displayedRankings: any[] = []; // Stores the paginated data
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  totalItems: number = 0;
+  itemsPerPageOptions: number[] = [5, 10, 20, 50];
 
   constructor(private http: HttpClient) {}
 
@@ -23,15 +23,21 @@ export class RankingComponent implements OnInit {
 
   fetchRankingData(): void {
     this.http.get<any[]>('http://localhost:5000/api/rankings/latest').subscribe(data => {
-      this.rankings = data;
-      this.totalItems = data.length;  // Set the total number of items for pagination
-      this.paginateData();           // Call paginate to show the current page's data
+      // Assign `originalRank` based on initial order
+      this.rankings = data.map((repo, index) => ({
+        ...repo,
+        originalRank: index + 1
+      }));
+
+      this.totalItems = this.rankings.length;
+      this.paginateData();
     });
   }
+
   paginateData(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.rankings = this.rankings.slice(startIndex, endIndex);
+    this.displayedRankings = this.rankings.slice(startIndex, endIndex);
   }
 
   onPageChange(page: number): void {
@@ -41,11 +47,10 @@ export class RankingComponent implements OnInit {
   
   onItemsPerPageChange(itemsPerPage: number): void {
     this.itemsPerPage = itemsPerPage;
-    this.currentPage = 1; // Reset to the first page whenever the items per page changes
+    this.currentPage = 1;
     this.paginateData();
   }
 
-  // Optionally, you can calculate the total number of pages if it's not returned from the API
   get totalPages(): number {
     return Math.ceil(this.totalItems / this.itemsPerPage);
   }
