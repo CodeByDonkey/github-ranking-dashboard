@@ -1,0 +1,63 @@
+.search-bar {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  .repo-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .repo-card h3 a {
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .repo-card h3 a:hover {
+    text-decoration: underline;
+  }
+  
+  .repo-card p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .repo-card p strong {
+    font-weight: bold;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+  
+  select {
+    margin-right: 10px;
+  }
+  

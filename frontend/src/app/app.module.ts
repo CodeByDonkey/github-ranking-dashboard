@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { RepoDetailComponent } from './components/repo-detail/repo-detail.component';
 import { RepoStatsComponent } from './components/repo-stats/repo-stats.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RepoListComponent,
     RepoDetailComponent,
     RepoStatsComponent,
-    NavbarComponent
+    NavbarComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,

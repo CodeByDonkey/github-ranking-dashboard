@@ -1,0 +1,37 @@
+<h1>Repository Rankings</h1>
+
+<div *ngFor="let ranking of rankings">
+  <div class="repo-card">
+    <h3>
+        <a [routerLink]="['/repo', ranking.repo.repo_name]">{{ ranking.repo.repo_name }}</a>
+    </h3>
+    <p>{{ ranking.repo.description }}</p>
+    <p><strong>Language:</strong> {{ ranking.repo.language }}</p>
+    <p><strong>Owner:</strong> {{ ranking.repo.username }}</p>
+    <p><strong>Stars:</strong> {{ ranking.daily_stats.stars }}</p>
+    <p><strong>Forks:</strong> {{ ranking.daily_stats.forks }}</p>
+    <p><strong>Issues:</strong> {{ ranking.daily_stats.issues }}</p>
+    <p><strong>Last Commit:</strong> {{ ranking.daily_stats.last_commit | date }}</p>
+  </div>
+</div>
+
+<!-- Pagination Controls -->
+<div class="pagination-controls">
+    <label for="itemsPerPage">Items per page:</label>
+    <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange(itemsPerPage)">
+    <option [value]="5">5</option>
+      <option [value]="10">10</option>
+      <option [value]="20">20</option>
+      <option [value]="30">30</option>
+    </select>
+    
+    <div class="pagination">
+      <button (click)="onPageChange(1)" [disabled]="currentPage === 1">First</button>
+      <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      
+      <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+      <button (click)="onPageChange(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+    </div>
+  </div>
