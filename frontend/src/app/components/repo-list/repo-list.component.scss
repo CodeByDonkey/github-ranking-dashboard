@@ -31,3 +31,32 @@
 .repo-card p strong {
   font-weight: bold;
 }
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+select {
+  margin-right: 10px;
+}

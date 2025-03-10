@@ -17,3 +17,23 @@
   <p><strong>Language:</strong> {{ repoData.repo.language }}</p>
   <p><strong>Owner:</strong> {{ repoData.repo.username }}</p>
 </div>
+
+<!-- Pagination Controls -->
+<div class="pagination-controls">
+  <label for="itemsPerPage">Items per page:</label>
+  <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange(itemsPerPage)">
+    <option [value]="10">10</option>
+    <option [value]="20">20</option>
+    <option [value]="30">30</option>
+  </select>
+  
+  <div class="pagination">
+    <button (click)="onPageChange(1)" [disabled]="currentPage === 1">First</button>
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    <button (click)="onPageChange(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+  </div>
+</div>
